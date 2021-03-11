@@ -1,0 +1,140 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <h2>Check the source code</h2>
+    <script>
+        let array1 = ["Jake", "Emily", "David", "Artie"]
+        let array2 = ["Smith", "Johnson", "Roberts", "Murray"]
+            //BASICS - REMEMBER ARRAYS START AT 0!
+
+        array1[1] // → Emily
+        array1.indexOf("Emily") // → 1
+
+
+        // Adding items
+
+        //Immutable
+        array1.concat(["X", "Y"]) // → ["Jake","Emily","David","Artie","X","Y"]
+
+        //Mutative
+        array1.push("X") // array1 == ["Jake","Emily","David","Artie","X"]
+        array1.unshift("X") // array1 == ["X","Jake","Emily","David","Artie","X"]
+        array1.splice(2, 0, "X") // array1 == ["Jake","Emily","X","David","Artie"]
+
+        // Replace			
+        array1.splice(2, 1, "X") // array1 == ["Jake","Emily","X","Artie"]
+
+        //Remove
+        array1.pop() // array1 == ["Jake","Emily","David"]
+        array1.shift() // array1 == ["Emily","David","Artie"]
+        array1.splice(2, 1) // array1 == ["Jake","Emily","Artie"]	
+
+
+        //Insert			
+        // After
+        array1.splice(array1.indexOf("Emily") + 1, 0, "Will") // array1 == ["Jake","Emily","Will","David","Artie"]
+            // Before
+        array1.splice(array1.indexOf("Emily"), 0, "Will") // array1 == ["Jake","Will","Emily","David","Artie"]
+
+
+        //Subset 
+
+        array1.slice(0, 1) // → ["Jake"]
+        array1.slice(1) // → [Emily","David","Artie"]
+        array1.slice(1, 2) // → ["Emily"]
+
+        re = array1.splice(1) // re = [Emily","David","Artie"]  array1 == ["Jake"]
+        re = array1.splice(1, 2) // re = [Emily","David"]      array1 == ["Jake","Artie"]			
+
+
+        // concat
+        let array3 = array1.concat(array2) // array1 == ["Jake", "Emily", "David", "Artie", "Smith", "Johnson", "Roberts", "Murray"]
+
+        //Iterate
+
+
+        for (const i of["Jake", "Emily", "David", "Artie"]) {
+            console.log(i)
+        }
+
+        for (const i of array1) {
+            console.log(i)
+        }
+
+        for (i = 0; i < array1.length; i++) {
+            console.log(array1[i])
+        }
+
+        for (const [index, value] of["Jake", "Emily", "David", "Artie"].entries()) {
+            console.log(index, value)
+        }
+
+
+
+        //Filter
+        var numbers = [1, 3, 6, 8, 11];
+
+        var lucky = numbers.filter(function(xxx) {
+            return xxx > 7;
+        });
+
+        // lucky == [8, 11]
+
+
+        //Find - returns the value of the first element in the provided array that satisfies the provided testing function.
+        const found = numbers.find(element => element > 7); // found == 8
+
+        //every - tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.
+        const isBelowThreshold = (currentValue) => currentValue < 40;
+        numbers.every(isBelowThreshold) // == ture
+
+        const isName2 = (currentValue) => currentValue == "Jake" || currentValue == "Emily";
+
+
+        //some - tests whether at least one element in the array passes the test implemented by the provided function. It returns a Boolean value.
+        const even = (element) => element % 2 === 0;
+        numbers.some(even) // == false
+
+
+
+        //OBJECTS
+
+        const obj = {
+            firstName: 'Jake',
+            lastName: 'Smith',
+            gender: 'Male'
+        };
+        let ddd = []
+        for (const key in obj) {
+            //console.log(key, obj[key])
+            ddd.push(key)
+        }
+
+        console.log(ddd[2])
+
+        for (const [key, value] of Object.entries(obj)) {
+            console.log(key, value)
+        }
+
+
+        // MATH
+
+        const numbers2 = [1, 2, 3]
+            //creates a new array populated with the results of calling a provided function on every element in the calling array.
+        console.log(numbers2.map(n => n * 2)) // [2, 4, 6]
+
+        //Returns a new array containing all elements of the calling array for which the provided filtering function returns true.
+        console.log(numbers2.filter(n => n % 2 === 0)) // [2]
+
+        //Apply a function against an accumulator and each value of the array (from left-to-right) as to reduce it to a single value.
+        console.log(numbers2.reduce((prev, next) => prev + next, 0)) // 6
+
+        //Returns the found element in the array, if some element in the array satisfies the testing function, or undefined if not found.
+        console.log(numbers2.find(n => n > 2)) // 3
+    </script>
+</body>
+
+</html>
